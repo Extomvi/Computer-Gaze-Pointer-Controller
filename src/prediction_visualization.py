@@ -43,8 +43,6 @@ def display_hp(frame, hp_output, face_coords):
         cv2.LINE_AA
     )
 
-
-# Reference: https://github.com/natanielruiz/deep-head-pose
 def draw_axis(img, yaw, pitch, roll, tdx=None, tdy=None, size=100):
     pitch = pitch * np.pi / 180
     yaw = -(yaw * np.pi / 180)
