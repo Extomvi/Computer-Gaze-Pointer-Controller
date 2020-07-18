@@ -16,7 +16,8 @@ The application uses gaze detection points with the use of deep learning model t
 
 
 ## Project Set Up and Installation
-OpenVINO™ toolkit and its dependencies must be installed to run the application. OpenVINO 2020.2.130 is used on this project.  
+OpenVINO™ toolkit and its dependencies must be installed to run the application. OpenVINO 2020.2.130 is used on this project. 
+ 
  Installation instructions may be found at:
  * https://software.intel.com/en-us/articles/OpenVINO-Install-Linux 
  * https://github.com/udacity/nd131-openvino-fundamentals-project-starter/blob/master/linux-setup.md  
@@ -70,30 +71,6 @@ $ python3 /opt/intel/openvino/deployment_tools/tools/model_downloader/downloader
 $ python3 /opt/intel/openvino/deployment_tools/tools/model_downloader/downloader.py --name "landmarks-regression-retail-0009"
 ```
 
-*Install the requirements*
-```
- Install the requirements
-```
-
-*Project structure*
-
-```
-|--bin
-    |--demo.mp4
-|--model
-|--src
-    |--base.py
-    |--prediction_visualization
-    |--face_detection.py
-    |--facial_landmarks_detection.py
-    |--gaze_estimation.py
-    |--head_pose_estimation
-    |--input_feeder.py
-    |--main.py
-    |--mouse_controller.py
-|--README.md
-|--requirements.txt
-```
 ## Demo
 Use the following command to run the application
 
@@ -111,31 +88,6 @@ usage: main.py [-h] -fd FACE_DETECTION_MODEL -fld FACIAL_LANDMARK_MODEL -ge
                [-l CPU_EXTENSION] [-prob PROB_THRESHOLD] [-d DEVICE]
                [-v VISUALIZATION]
 
-optional arguments:
-  -h, --help            show this help message and exit
-  -fd FACE_DETECTION_MODEL, --face_detection_model FACE_DETECTION_MODEL
-                        Path to .xml file of Face Detection model.
-  -fld FACIAL_LANDMARK_MODEL, --facial_landmark_model FACIAL_LANDMARK_MODEL
-                        Path to .xml file of Facial Landmark Detection model.
-  -ge GAZE_ESTIMATION_MODEL, --gaze_estimation_model GAZE_ESTIMATION_MODEL
-                        Path to .xml file of Gaze Estimation model.
-  -hp HEAD_POSE_MODEL, --head_pose_model HEAD_POSE_MODEL
-                        Path to .xml file of Head Pose Estimation model.
-  -i INPUT, --input INPUT
-                        Path to video file or enter cam for webcam
-  -l CPU_EXTENSION, --cpu_extension CPU_EXTENSION
-                        path of extensions if any layers is incompatible with
-                        hardware
-  -prob PROB_THRESHOLD, --prob_threshold PROB_THRESHOLD
-                        Probability threshold for model to identify the face .
-  -d DEVICE, --device DEVICE
-                        Specify the target device to run on: CPU, GPU, FPGA or
-                        MYRIAD is acceptable. Sample will look for a suitable
-                        plugin for device (CPU by default)
-  -v VISUALIZATION, --visualization VISUALIZATION
-                        Set to True to visualization all different model
-                        outputs
-```
 
 ## Benchmarks
 Measuring performance (Start inference asyncronously, 4 inference requests using 4 streams for CPU, limits: 60000 ms duration)
@@ -219,6 +171,7 @@ ________________________________________________
 ## Results
 From the above results, the best model precision combination is that of Face detection 32 bits precision with other models in 16 bits. 
 This reduce the model size and load time, although models with lower precision gives low accuracy but better inference time.
+
 In this case, both model precisions tested had around the same performance. what is remarkably is that the face detection model is, by far, the most expensive computationally speaking, representing around 50% of all the inference time taken per frame.
 
 In order to improve the application, it is suggested to check if there is another available face detection model that could reach similar performance, because at this point the biggest issue is the time taken for this model.
