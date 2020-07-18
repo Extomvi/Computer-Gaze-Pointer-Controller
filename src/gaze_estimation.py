@@ -3,8 +3,6 @@ import numpy as np
 import math
 from base import Inference
 
-
-# Reference: https://github.com/mdfazal/computer-pointer-controller-1/blob/master/gaze_estimation.py
 class Gaze_Estimation(Inference):
     def __init__(self):
         super().__init__()
