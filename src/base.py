@@ -84,13 +84,3 @@ class Inference:
         coords = preprocess_output(result, prob_threshold)
 
         return coords
-
-    # def clean(self):
-    #     """
-    #     Deletes all the instances
-    #     :return: None
-    #     """
-    #     print('SEE ME HERE')
-    #     del self.exec_network
-    #     del self.plugin
-    #     del self.network
