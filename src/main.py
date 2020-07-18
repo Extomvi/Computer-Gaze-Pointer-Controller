@@ -78,50 +78,54 @@ def main():
         frame_count += 1
         inf_start = time.time()
         if frame is not None:
-            key = cv2.waitKey(60)
+            try:
+                key = cv2.waitKey(60)
 
-            det_time = time.time() - inf_start
+                det_time = time.time() - inf_start
 
-            # make predictions
-            detected_face, face_coords = fd.predict(frame.copy(), args.prob_threshold)
-            hp_output = hp.predict(detected_face.copy())
-            left_eye, right_eye, eye_coords = fld.predict(detected_face.copy())
-            new_mouse_coord, gaze_vector = ge.predict(left_eye, right_eye, hp_output)
+                # make predictions
+                detected_face, face_coords = fd.predict(frame.copy(), args.prob_threshold)
+                hp_output = hp.predict(detected_face.copy())
+                left_eye, right_eye, eye_coords = fld.predict(detected_face.copy())
+                new_mouse_coord, gaze_vector = ge.predict(left_eye, right_eye, hp_output)
 
-            stop_inference = time.time()
-            inference_time = inference_time + stop_inference - inf_start
-            counter = counter + 1
+                stop_inference = time.time()
+                inference_time = inference_time + stop_inference - inf_start
+                counter = counter + 1
 
-            # Visualization
-            preview = args.visualization
-            if preview:
-                preview_frame = frame.copy()
-                face_frame = detected_face.copy()
+                # Visualization
+                preview = args.visualization
+                if preview:
+                    preview_frame = frame.copy()
+                    face_frame = detected_face.copy()
 
-                draw_face_bbox(preview_frame, face_coords)
-                display_hp(preview_frame, hp_output, face_coords)
-                draw_landmarks(face_frame, eye_coords)
-                draw_gaze(face_frame, gaze_vector, left_eye.copy(), right_eye.copy(), eye_coords)
+                    draw_face_bbox(preview_frame, face_coords)
+                    display_hp(preview_frame, hp_output, face_coords)
+                    draw_landmarks(face_frame, eye_coords)
+                    draw_gaze(face_frame, gaze_vector, left_eye.copy(), right_eye.copy(), eye_coords)
 
-            if preview:
-                img = np.hstack((cv2.resize(preview_frame, (500, 500)), cv2.resize(face_frame, (500, 500))))
-            else:
-                img = cv2.resize(frame, (500, 500))
+                if preview:
+                    img = np.hstack((cv2.resize(preview_frame, (500, 500)), cv2.resize(face_frame, (500, 500))))
+                else:
+                    img = cv2.resize(frame, (500, 500))
 
-            cv2.imshow('Visualization', img)
+                cv2.imshow('Visualization', img)
 
-            # set speed
-            if frame_count % 5 == 0:
-                mc.move(new_mouse_coord[0], new_mouse_coord[1])
+                # set speed
+                if frame_count % 5 == 0:
+                    mc.move(new_mouse_coord[0], new_mouse_coord[1])
 
-            # INFO
-            print(f'[INFO] approx. NUMBER OF FRAMES: {frame_num}')
-            print(f'[INFO] approx. INFERENCE TIME: {det_time * 1000}ms')
+                # INFO
+                log.info("NUMBER OF FRAMES: {} ".format(frame_num))
+                log.info("INFERENCE TIME: {}ms".format(det_time * 1000))
 
-            frame_num += 1
+                frame_num += 1
 
-            if key == 27:
-                break
+                if key == 27:
+                    break
+            except:
+                print('Not supported image or video file format. Please send in a supported video format.')
+                exit()
     feed.close()
 
 
