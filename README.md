@@ -2,11 +2,7 @@
 
 This is the last Project in order to obtain the Intel Edge AI Nanodegree from Udacity, the objective is to create an application capable of moving the computer pointer using only the movement from the head and eyes.
 
-<p align="center">
-<video width="400px" height="350px" controls>
-  <source src="resources/GazePointer.mp4" type="video/mp4">
-</video>
-</p>
+[![Watch the video](https://img.youtube.com/vi/pDGPJJVS2jE&t/maxresdefault.jpg)](https://www.youtube.com/watch?v=pDGPJJVS2jE&t)
 
  This involves many considerations:
 
