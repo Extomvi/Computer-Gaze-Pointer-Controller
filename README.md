@@ -5,7 +5,6 @@ This is the last Project in order to obtain the Intel Edge AI Nanodegree from Ud
 <p align="center">
 <video width="400px" height="350px" controls>
   <source src="resources/GazePointer.mp4" type="video/mp4">
-  Your browser does not support the video tag.
 </video>
 </p>
 
