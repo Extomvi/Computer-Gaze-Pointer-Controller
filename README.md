@@ -1,6 +1,12 @@
 # Computer Pointer Controller
 
-This is the last Project in order to obtain the Intel Edge AI Nanodegree from Udacity, the objective is to create an application capable of moving the computer pointer using only the movement from the head and eyes. This involves many considerations:
+This is the last Project in order to obtain the Intel Edge AI Nanodegree from Udacity, the objective is to create an application capable of moving the computer pointer using only the movement from the head and eyes.
+
+<p align="center">
+<img src="resources/GazePointer.mp4" width=400px height=350px/>
+</p>
+
+ This involves many considerations:
 
 * We need several models working together, each one covering a needed functionality. For example, a face detection model is used to feed a face landmarks model.
 * We need to control the application logic to create an optimal flow, as the models involved could use a lot of resources.
