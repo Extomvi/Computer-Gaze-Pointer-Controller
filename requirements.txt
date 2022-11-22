@@ -2,7 +2,7 @@ image==1.5.27
 ipdb==0.12.3
 ipython==7.16.3
 numpy~=1.18.1
-Pillow==9.0.1
+Pillow==9.3.0
 requests==2.22.0
 opencv-python~=4.2.0.32
 pyautogui~=0.9.48
