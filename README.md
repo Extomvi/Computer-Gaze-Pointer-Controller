@@ -91,7 +91,7 @@ usage: main.py [-h] -fd FACE_DETECTION_MODEL -fld FACIAL_LANDMARK_MODEL -ge
                GAZE_ESTIMATION_MODEL -hp HEAD_POSE_MODEL -i INPUT
                [-l CPU_EXTENSION] [-prob PROB_THRESHOLD] [-d DEVICE]
                [-v VISUALIZATION]
-
+```
 
 ## Benchmarks
 Measuring performance (Start inference asyncronously, 4 inference requests using 4 streams for CPU, limits: 60000 ms duration)
